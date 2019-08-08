@@ -1,0 +1,12 @@
+<h3>List </h3>
+<ul>
+  <% @lists.each do |list| %>
+    <li><%= link_to list.name, list_path(list)  %></li>
+      <ul>
+        <% list.list_items.each do |l_t|%>
+          <li>Name: <%= l_t.name %></li>
+          <li>Description: <%= l_t.description %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</ul>

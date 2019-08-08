@@ -1,0 +1,7 @@
+<h3>Create a List</h3>
+<%= form_with model: @List do |f| %>
+  <%= f.text_field :name, placeholder: "name" %>
+  <%= f.text_field :description, placeholder: "description" %>
+
+  <%= form.submit %>
+<% end %>
