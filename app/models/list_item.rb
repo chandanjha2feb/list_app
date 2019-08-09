@@ -1,3 +1,3 @@
 class ListItem < ApplicationRecord
-  belongs_to :list, dependent: 'destroy'
+  belongs_to :list
 end

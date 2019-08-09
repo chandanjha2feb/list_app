@@ -14,16 +14,21 @@ class ListsController < ApplicationController
     #render json: @list
     end
 
+    def new
+      @list = List.new
+    end
     # POST /lists
     def create
       @list = List.new(list_params)
-
+      respond_to do |format|
       if @list.save
-        redirect_to lists_path
-        #render json: @list, status: :created
+        format.html { redirect_to @list, notice: 'Result was successfully created.' }
+        format.json { render :show, status: :created, location: list }
       else
-        render :new, json: @list.errors, status: :unprocessable_entity
+        format.html { render :new }
+        format.json { render json: @list.errors, status: :unprocessable_entity }
       end
+    end
     end
 
     # PATCH/PUT /lists/1
@@ -47,6 +52,19 @@ class ListsController < ApplicationController
       end
     end
 
+    def vanish
+      @list= List.find_by(id: params[:list_id])
+      if @list.present?
+        if params.include?('restore')
+          @list.status = true
+        else
+          @list.status=false
+        end
+      end
+      @list.save
+      redirect_to lists_path
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_list
@@ -55,6 +73,6 @@ class ListsController < ApplicationController
 
       # Only allow a trusted parameter "white list" through.
       def list_params
-        params.require(:list).permit(:name, :description)
+        params.require(:list).permit(:name, :description, :status)
       end
 end

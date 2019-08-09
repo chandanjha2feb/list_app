@@ -1,12 +1,22 @@
 <h3>List </h3>
 <ul>
   <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list)  %></li>
+    <li>Name: <%= link_to list.name, list_path(list)  %> || Description: <%= list.description %>
+      <ul>
+        <li><%= link_to 'edit', edit_list_path(list), placeholder:'Edit' %></li>
+        <li><%= button_to 'Remove', list_path(list), method: 'delete', data: { confirm: 'Are you sure?' } %></li>
+        <li><%= button_to 'Vanish', list_vanish_path(list, :vanish => 'vanish'), method: 'post', data: { confirm: 'Are you sure?' } %></li>
+      </ul>
       <ul>
         <% list.list_items.each do |l_t|%>
           <li>Name: <%= l_t.name %></li>
           <li>Description: <%= l_t.description %></li>
         <% end %>
       </ul>
+    </li>
   <% end %>
 </ul>
+<%= link_to "New List",  new_list_path %>
+<h3>
+  <%= link_to 'Trash', trash_index_path %>
+</h3>

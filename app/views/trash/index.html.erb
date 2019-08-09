@@ -1,0 +1,6 @@
+<h1>Trash</h1>
+<ul
+  <% @trash.each do |t| %>
+    <li><%= t.name%></li> || <%= link_to 'Restore', list_vanish_path(t , :restore =>'restore') , method: 'post'%>
+  <% end %>
+</ul>
