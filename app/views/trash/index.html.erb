@@ -1,6 +1,12 @@
-<h1>Trash</h1>
+<h3>List</h3>
 <ul
-  <% @trash.each do |t| %>
-    <li><%= t.name%></li> || <%= link_to 'Restore', list_vanish_path(t , :restore =>'restore') , method: 'post'%>
+  <% @trash.each do |l| %>
+    <li><%= l.name%> || <%= link_to 'Restore', list_vanish_path(l , :restore =>'restore') , method: 'post'%></li>
+    <h3>List Item</h3>
+      <ul>
+        <%@trash_list_items.each do |t|%>
+          <li><%= t.name%></li> || <%= link_to 'Restore', list_list_item_vanish_path(l,t , :restore =>'restore') , method: 'post'%>
+        <% end %>
+      </ul>
   <% end %>
 </ul>

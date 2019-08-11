@@ -1,17 +1,16 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show, :update, :destroy]
+  before_action :set_list, only: [:show, :update, :destroy, :edit]
 
     # GET /lists
     def index
       @lists = List.where(status: true)
-
-      #render json: @lists
     end
 
     # GET /lists/1
     def show
-      @list = List.find(params[:id])
-    #render json: @list
+    end
+
+    def edit
     end
 
     def new
