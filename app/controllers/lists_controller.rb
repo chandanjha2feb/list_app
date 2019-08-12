@@ -47,6 +47,7 @@ class ListsController < ApplicationController
     end
 
     def vanish
+      byebug
       SoftDelete.vanish(params)
       redirect_to lists_path
     end
