@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   resources :lists do
     match 'vanish', to: 'lists#vanish', via: [:post]
     resources :list_items do
-      match 'vanish', to: 'list_items#vanish', via: [:post]
     end
   end
-
+  post "/list_items/:list_item_id/vanish(.:format)" => "list_items#vanish", as: 'item_vanish'
   root "lists#index"
 
 end

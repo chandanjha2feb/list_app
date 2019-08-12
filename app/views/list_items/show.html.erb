@@ -1,7 +1,10 @@
-<h3>List Item </h3>
-<ul>
-  <li><%= @list_item.name %></li>
-  <li>
-    <%= @list_item.description %>
-  </li>
-</ul>
+<div class="container">
+  <h3 style="color: #007bff">List Item</h3>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <td style="background-color: #bdcbf5;">List name: <%= @list_item.name %></td>
+      <td style="background-color: #bdcbf5;">Description: <%= @list_item.description %></td>
+    </tr>
+  </table>
+  <%= link_to 'Home', lists_path, class: "btn btn-primary" %>
+</div>

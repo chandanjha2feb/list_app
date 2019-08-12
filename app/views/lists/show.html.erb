@@ -1,2 +1,10 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<div class="container">
+  <h3 style="color: #007bff">List </h3>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <td style="background-color: #bdcbf5;">List name: <%= @list.name %></td>
+      <td style="background-color: #bdcbf5;">Description: <%= @list.description %></td>
+    </tr>
+  </table>
+  <%= link_to 'Home', lists_path, class: "btn btn-primary" %>
+</div>

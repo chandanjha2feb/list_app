@@ -5,13 +5,16 @@
     <tr>
       <td style="background-color: #bdcbf5;"  >List name: <%= link_to l.name, list_path(l)%>
         <span class="pull-right">
+          <%= link_to  list_path(l), title: "show List" do %>
+              <i class="fa fa-eye"></i>
+          <% end %>||
           <%= link_to  edit_list_path(l), title: "Edit List" do %>
               <i class="fa fa-edit"></i>
           <% end %>||
           <%= link_to list_path(l), method: 'delete', data: { confirm: 'Are you sure?' }, title: "Delete" do %>
                 <i class="fa fa-trash"></i>
           <% end %>||
-          <%= link_to  list_vanish_path(l, :vanish => 'vanish'), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete" do %>
+          <%= link_to  list_vanish_path(l), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete" do %>
               <i class="fa fa-cut"></i>
           <% end %>
         </span>
@@ -24,13 +27,16 @@
             <tr>
               <td>List item name: <%= l_t.name %>
                 <span class="pull-right">
+                  <%= link_to  list_list_item_path(l, l_t), title: "show List" do %>
+                      <i class="fa fa-eye"></i>
+                  <% end %>||
                     <%= link_to edit_list_list_item_path(l,l_t), title:"Edit List Item" do %>
                       <i class="fa fa-edit"></i>
                     <% end %>||
                     <%= link_to list_list_item_path(l,l_t), method: 'delete', data: { confirm: 'Are you sure?' }, title: "Delete" do %>
                       <i class="fa fa-trash"></i>
                     <% end %>||
-                    <%= link_to  list_list_item_vanish_path(l,l_t, :vanish => 'vanish'), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete" do %>
+                    <%= link_to  item_vanish_path(l_t), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete" do %>
                       <i class="fa fa-cut"></i>
                     <% end %>||
                     <%= link_to new_list_list_item_path(l,l_t), title:"Add Item" do %>

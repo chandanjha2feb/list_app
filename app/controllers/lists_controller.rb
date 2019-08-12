@@ -1,12 +1,11 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :update, :destroy, :edit]
+  extend SoftDelete
 
-    # GET /lists
     def index
       @lists = List.where(status: true)
     end
 
-    # GET /lists/1
     def show
     end
 
@@ -30,18 +29,14 @@ class ListsController < ApplicationController
     end
     end
 
-    # PATCH/PUT /lists/1
     def update
       if @list.update(list_params)
         redirect_to list_path(@list)
-        #render json: @list
       else
-        render :edit
-        # render json: @list.errors, status: :unprocessable_entity
+        render json: @list.errors, status: :unprocessable_entity
       end
     end
 
-    # DELETE /lists/1
     def destroy
       @list.destroy
       if @list.destroy
@@ -52,15 +47,7 @@ class ListsController < ApplicationController
     end
 
     def vanish
-      @list= List.find_by(id: params[:list_id])
-      if @list.present?
-        if params.include?('restore')
-          @list.status = true
-        else
-          @list.status=false
-        end
-      end
-      @list.save
+      SoftDelete.vanish(params)
       redirect_to lists_path
     end
 

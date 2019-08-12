@@ -1,12 +1,30 @@
-<h3>List</h3>
-<ul
+<div class="container">
+<h3 style="color: #007bff">List </h3>
+<table class="table table-bordered table-hover">
   <% @trash.each do |l| %>
-    <li><%= l.name%> || <%= link_to 'Restore', list_vanish_path(l , :restore =>'restore') , method: 'post'%></li>
-    <h3>List Item</h3>
-      <ul>
-        <%@trash_list_items.each do |t|%>
-          <li><%= t.name%></li> || <%= link_to 'Restore', list_list_item_vanish_path(l,t , :restore =>'restore') , method: 'post'%>
+  <tr>
+    <td style="background-color: #bdcbf5;">List name: <%=  l.name %>
+      <span class="pull-right">
+        <%= link_to list_vanish_path(l, service: {restore:'restore'}), method: 'post', data: { confirm: 'Are you sure?' }, title:"Restore" do %>
+            <i class="fa fa-window-restore"></i>
         <% end %>
-      </ul>
+      </span>
+    </td>
+  </tr>
   <% end %>
-</ul>
+</table>
+<h3 style="color: #007bff">List Item</h3>
+<table class="table table-bordered table-hover">
+  <% @trash_list_items.each do |l| %>
+  <tr>
+    <td style="background-color: #bdcbf5;">List item name: <%=  l.name %>
+      <span class="pull-right">
+        <%= link_to item_vanish_path(l, service: {restore:'restore'}), method: 'post', data: { confirm: 'Are you sure?' }, title:"Restore" do %>
+            <i class="fa fa-window-restore"></i>
+        <% end %>
+      </span>
+    </td>
+  </tr>
+  <% end %>
+</table>
+</div>
