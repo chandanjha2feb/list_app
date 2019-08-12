@@ -14,7 +14,7 @@
           <%= link_to list_path(l), method: 'delete', data: { confirm: 'Are you sure?' }, title: "Delete" do %>
                 <i class="fa fa-trash"></i>
           <% end %>||
-          <%= link_to  list_vanish_path(l), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete" do %>
+          <%= link_to  list_vanish_path(l), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete", remote: true do %>
               <i class="fa fa-cut"></i>
           <% end %>
         </span>
@@ -36,7 +36,7 @@
                     <%= link_to list_list_item_path(l,l_t), method: 'delete', data: { confirm: 'Are you sure?' }, title: "Delete" do %>
                       <i class="fa fa-trash"></i>
                     <% end %>||
-                    <%= link_to  item_vanish_path(l_t), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete" do %>
+                    <%= link_to  item_vanish_path(l_t), method: 'post', data: { confirm: 'Are you sure?' }, title:"Soft delete", remote: true do %>
                       <i class="fa fa-cut"></i>
                     <% end %>||
                     <%= link_to new_list_list_item_path(l,l_t), title:"Add Item" do %>

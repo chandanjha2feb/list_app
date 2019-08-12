@@ -5,7 +5,7 @@
   <tr>
     <td style="background-color: #bdcbf5;">List name: <%=  l.name %>
       <span class="pull-right">
-        <%= link_to list_vanish_path(l, service: {restore:'restore'}), method: 'post', data: { confirm: 'Are you sure?' }, title:"Restore" do %>
+        <%= link_to list_vanish_path(l, service: {restore:'restore'}), method: 'post', data: { confirm: 'Are you sure?' }, title:"Restore", remote: true do %>
             <i class="fa fa-window-restore"></i>
         <% end %>
       </span>
@@ -19,7 +19,7 @@
   <tr>
     <td style="background-color: #bdcbf5;">List item name: <%=  l.name %>
       <span class="pull-right">
-        <%= link_to item_vanish_path(l, service: {restore:'restore'}), method: 'post', data: { confirm: 'Are you sure?' }, title:"Restore" do %>
+        <%= link_to item_vanish_path(l, service: {restore:'restore'}), method: 'post', data: { confirm: 'Are you sure?' }, title:"Restore", remote: true do %>
             <i class="fa fa-window-restore"></i>
         <% end %>
       </span>

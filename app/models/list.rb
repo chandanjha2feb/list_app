@@ -1,5 +1,4 @@
 class List < ApplicationRecord
   has_many :list_items, dependent: :destroy
-
-  include SoftDelete
+  validates_presence_of :name, :status
 end
